@@ -37,8 +37,18 @@ class TodoList extends StatelessWidget {
         valueListenable: listNotifier,
         builder: (context, value, child) {
           return ListView.builder(
-            itemBuilder: (context, index) => TodoTile(
-              task: value[index],
+            itemBuilder: (context, index) => GestureDetector(
+              onTap: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => EditTaskPage(
+                    listNotifier: listNotifier,
+                    task: value[index],
+                  ),
+                ));
+              },
+              child: TodoTile(
+                task: value[index],
+              ),
             ),
             itemCount: value.length,
           );

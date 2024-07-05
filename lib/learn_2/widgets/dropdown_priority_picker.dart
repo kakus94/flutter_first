@@ -22,15 +22,7 @@ class _DropdownPriorityPickerState extends State<DropdownPriorityPicker> {
   @override
   Widget build(BuildContext context) {
     return DropdownButton(
-      onChanged: (value) {
-        if (value == null) return;
-        setState(() {
-          widget.initialDropdownValue = value;
-          widget.priorityNotifier.value =
-              widget.initialDropdownValue ?? TodoPriority.high;
-        });
-      },
-      value: widget.initialDropdownValue ?? TodoPriority.high,
+      value: widget.priorityNotifier.value,
       items: TodoPriority.values
           .map(
             (element) => DropdownMenuItem(
@@ -50,6 +42,14 @@ class _DropdownPriorityPickerState extends State<DropdownPriorityPicker> {
             ),
           )
           .toList(),
+      onChanged: (value) {
+        if (value == null) return;
+        setState(() {
+          widget.initialDropdownValue = value;
+          widget.priorityNotifier.value =
+              widget.initialDropdownValue ?? TodoPriority.high;
+        });
+      },
     );
   }
 }
