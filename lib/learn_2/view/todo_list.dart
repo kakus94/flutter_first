@@ -38,9 +38,9 @@ class TodoList extends StatelessWidget {
         builder: (context, value, child) {
           return ListView.builder(
             itemBuilder: (context, index) => TodoTile(
-              task: listOfTask[index],
+              task: value[index],
             ),
-            itemCount: listOfTask.length,
+            itemCount: value.length,
           );
         },
       ),

@@ -6,9 +6,9 @@ import 'package:flutter_first/learn_2/model/todo_priority.dart';
 
 class DropdownPriorityPicker extends StatefulWidget {
   DropdownPriorityPicker({
-    Key? key,
+    super.key,
     required this.priorityNotifier,
-  }) : super(key: key);
+  });
 
   // final ValueNotifier priorityNotifier;
   TodoPriority? initialDropdownValue = TodoPriority.high;

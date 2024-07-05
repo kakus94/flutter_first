@@ -84,8 +84,8 @@ class _EditTaskPageState extends State<EditTaskPage> {
                 onPressed: () {
                   widget.listNotifier.addTask(
                     TodoModel(
-                        title: "new",
-                        subtitle: "subtitle",
+                        title: widget.nameTaskController.text,
+                        subtitle: widget.descTaskController.text,
                         id: uuid.v4(),
                         color: widget.colorNotifier.value,
                         priority: widget.priorityNotifier.value),

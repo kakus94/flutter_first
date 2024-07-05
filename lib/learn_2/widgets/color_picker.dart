@@ -7,9 +7,9 @@ import 'package:flutter_first/learn_2/widgets/color_picker_item.dart';
 
 class ColorPicker extends StatefulWidget {
   const ColorPicker({
-    Key? key,
+    super.key,
     required this.colorNotifier,
-  }) : super(key: key);
+  });
 
   final ValueNotifier<Color> colorNotifier;
 
