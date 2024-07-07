@@ -1,7 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'dart:ffi';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_first/learn_2/controllers/list_notifier.dart';
 import 'package:flutter_first/learn_2/model/todo_model.dart';
@@ -111,7 +109,8 @@ class _EditTaskPageState extends State<EditTaskPage> {
                           subtitle: widget.descTaskController.text,
                           id: uuid.v4(),
                           color: widget.colorNotifier.value,
-                          priority: widget.priorityNotifier.value),
+                          priority: widget.priorityNotifier.value,
+                          isCheck: false),
                     );
                     Navigator.of(context).pop();
                   },
@@ -126,14 +125,12 @@ class _EditTaskPageState extends State<EditTaskPage> {
                           content: Text("Pole name nie moze byc puste")));
                       return;
                     }
-                    widget.listNotifier.updateTask(
-                      TodoModel(
-                          title: widget.nameTaskController.text,
-                          subtitle: widget.descTaskController.text,
-                          id: widget.task!.id,
-                          color: widget.colorNotifier.value,
-                          priority: widget.priorityNotifier.value),
-                    );
+                    widget.listNotifier.updateTask(widget.task!.copyWith(
+                        color: widget.colorNotifier.value,
+                        title: widget.nameTaskController.text,
+                        subtitle: widget.descTaskController.text,
+                        priority: widget.priorityNotifier.value,
+                        isCheck: widget.task!.isCheck));
                     Navigator.of(context).pop();
                   },
                   color: Colors.blueAccent,

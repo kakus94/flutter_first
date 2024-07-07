@@ -15,6 +15,7 @@ List<TodoModel> listOfTask = [
     color: Colors.yellow,
     subtitle: '',
     id: uuid.v4(),
+    isCheck: false,
   ),
 ];
 

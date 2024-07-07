@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_first/learn_2/utils/colors.dart';
+import 'package:flutter_first/learn_2/utils/extensions.dart';
 import 'package:flutter_first/learn_2/widgets/color_picker_item.dart';
 
 class ColorPicker extends StatefulWidget {
@@ -26,8 +27,7 @@ class _ColorPickerState extends State<ColorPicker> {
           .map((e) => GestureDetector(
               onTap: () {
                 setState(() {
-                  colors.updateAll((key, value) => false);
-                  colors[e.key] = true;
+                  colors.toggleColor(e.key);
                   widget.colorNotifier.value = e.key;
                 });
               },
