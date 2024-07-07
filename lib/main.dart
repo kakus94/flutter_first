@@ -1,5 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:flutter_first/learn_2/controllers/list_notifier.dart';
 import 'package:flutter_first/learn_2/view/todo_list.dart';
 
 // [] cosc
@@ -22,7 +23,9 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       // home: const Home(),
-      home: TodoList(),
+      home: TodoList(
+        listNotifier: ListNotifier(listOfTask),
+      ),
     );
   }
 }

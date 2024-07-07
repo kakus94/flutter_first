@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_first/learn_2/model/todo_model.dart';
 
-class ListNotifier extends ValueNotifier<List<TodoModel>> {
+class ListNotifier extends ValueNotifier<List<TaskModel>> {
   ListNotifier(super.value);
 
-  void addTask(TodoModel task) {
+  List<TaskModel> listOfDoneTask = [];
+
+  void addTask(TaskModel task) {
     value = [...value..add(task)];
     notifyListeners();
   }
 
-  void updateTask(TodoModel task) {
+  void updateTask(TaskModel task) {
     final index = value.indexWhere(
       (element) => element.id == task.id,
     );
@@ -19,6 +21,25 @@ class ListNotifier extends ValueNotifier<List<TodoModel>> {
         ..add(task);
     }
 
+    notifyListeners();
+  }
+
+  void removeTask(TaskModel task) {
+    // ignore: avoid_print
+    print("remove task ${task.title}");
+    value = [...value..remove(task)];
+    notifyListeners();
+  }
+
+  void toogleDone(TaskModel task) {
+    final isDone = task.isCheck;
+    if (isDone) {
+      value = [...value..remove(task)];
+      listOfDoneTask = [...listOfDoneTask..add(task.copyWith(isCheck: true))];
+    } else {
+      value = [...value..add(task.copyWith(isCheck: false))];
+      listOfDoneTask = [...listOfDoneTask..remove(task)];
+    }
     notifyListeners();
   }
 }

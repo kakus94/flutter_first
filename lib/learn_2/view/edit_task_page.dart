@@ -11,7 +11,7 @@ import 'package:flutter_first/learn_2/widgets/dropdown_priority_picker.dart';
 class EditTaskPage extends StatefulWidget {
   EditTaskPage({super.key, this.task, required this.listNotifier});
 
-  final TodoModel? task;
+  final TaskModel? task;
   final TextEditingController nameTaskController = TextEditingController();
   final TextEditingController descTaskController = TextEditingController();
   final ListNotifier listNotifier;
@@ -22,12 +22,12 @@ class EditTaskPage extends StatefulWidget {
   @override
   State<EditTaskPage> createState() => _EditTaskPageState();
 
-  TextEditingController setTitleController(TodoModel? task) {
+  TextEditingController setTitleController(TaskModel? task) {
     if (task == null) return nameTaskController;
     return nameTaskController..text = task.title;
   }
 
-  TextEditingController setDescController(TodoModel? task) {
+  TextEditingController setDescController(TaskModel? task) {
     if (task == null) return descTaskController;
     return descTaskController..text = task.subtitle ?? "";
   }
@@ -104,7 +104,7 @@ class _EditTaskPageState extends State<EditTaskPage> {
                       return;
                     }
                     widget.listNotifier.addTask(
-                      TodoModel(
+                      TaskModel(
                           title: widget.nameTaskController.text,
                           subtitle: widget.descTaskController.text,
                           id: uuid.v4(),

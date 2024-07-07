@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_first/learn_2/model/todo_priority.dart';
 import 'package:flutter_first/learn_2/view/todo_list.dart';
 
-class TodoModel {
-  TodoModel(
+class TaskModel {
+  TaskModel(
       {required this.id,
       required this.title,
       required this.subtitle,
@@ -24,24 +24,24 @@ class TodoModel {
     isCheck = !isCheck;
   }
 
-  static List<TodoModel> getList() {
-    List<TodoModel> result = [];
+  static List<TaskModel> getList() {
+    List<TaskModel> result = [];
 
-    result.add(TodoModel(
+    result.add(TaskModel(
         title: "Zakupy",
         subtitle: "Biedrona",
         color: Colors.blueAccent,
         id: uuid.v4(),
         isCheck: false));
 
-    result.add(TodoModel(
+    result.add(TaskModel(
         title: "Zakupy",
         subtitle: "Lidl",
         color: const Color.fromARGB(255, 72, 131, 42),
         id: uuid.v4(),
         isCheck: false));
 
-    result.add(TodoModel(
+    result.add(TaskModel(
         title: "Zakupy",
         subtitle: "Dino",
         color: const Color.fromARGB(255, 178, 143, 46),
@@ -51,7 +51,7 @@ class TodoModel {
     return result;
   }
 
-  TodoModel copyWith({
+  TaskModel copyWith({
     String? id,
     String? title,
     String? subtitle,
@@ -59,7 +59,7 @@ class TodoModel {
     bool? isCheck,
     TodoPriority? priority,
   }) {
-    return TodoModel(
+    return TaskModel(
       id: id ?? this.id,
       title: title ?? this.title,
       subtitle: subtitle ?? this.subtitle,
@@ -102,7 +102,7 @@ class TodoModel {
   }
 
   @override
-  bool operator ==(covariant TodoModel other) {
+  bool operator ==(covariant TaskModel other) {
     if (identical(this, other)) return true;
 
     return other.id == id &&
